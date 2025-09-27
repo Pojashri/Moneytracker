@@ -99,9 +99,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
-    <Content Include="categorynbudget.aspx" />
-    <Content Include="Contact.aspx" />
+    <Content Include="UI\About.aspx" />
+    <Content Include="UI\categorynbudget.aspx" />
+    <Content Include="UI\Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -119,13 +119,13 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="dashboard.aspx" />
-    <Content Include="Default.aspx" />
+    <Content Include="UI\dashboard.aspx" />
+    <Content Include="UI\Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="login.aspx" />
-    <Content Include="profileSetting.aspx" />
-    <Content Include="reports.aspx" />
+    <Content Include="UI\login.aspx" />
+    <Content Include="UI\profileSetting.aspx" />
+    <Content Include="UI\reports.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -189,65 +189,69 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
+    <Compile Include="business\UserService.cs" />
+    <Compile Include="data\Context.cs" />
+    <Compile Include="data\Entities.cs" />
+    <Compile Include="data\Repository.cs" />
+    <Compile Include="UI\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
+    <Compile Include="UI\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="categorynbudget.aspx.cs">
+    <Compile Include="UI\categorynbudget.aspx.cs">
       <DependentUpon>categorynbudget.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="categorynbudget.aspx.designer.cs">
+    <Compile Include="UI\categorynbudget.aspx.designer.cs">
       <DependentUpon>categorynbudget.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contact.aspx.cs">
+    <Compile Include="UI\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
+    <Compile Include="UI\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="dashboard.aspx.cs">
+    <Compile Include="UI\dashboard.aspx.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="dashboard.aspx.designer.cs">
+    <Compile Include="UI\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="UI\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="UI\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="login.aspx.cs">
+    <Compile Include="UI\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="login.aspx.designer.cs">
+    <Compile Include="UI\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="profileSetting.aspx.cs">
+    <Compile Include="UI\profileSetting.aspx.cs">
       <DependentUpon>profileSetting.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="profileSetting.aspx.designer.cs">
+    <Compile Include="UI\profileSetting.aspx.designer.cs">
       <DependentUpon>profileSetting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="reports.aspx.cs">
+    <Compile Include="UI\reports.aspx.cs">
       <DependentUpon>reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="reports.aspx.designer.cs">
+    <Compile Include="UI\reports.aspx.designer.cs">
       <DependentUpon>reports.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
@@ -274,6 +278,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="common\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
