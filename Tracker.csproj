@@ -197,6 +197,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="business\UserService.cs" />
+    <Compile Include="common\helpers.cs" />
     <Compile Include="common\SqlHelper.cs" />
     <Compile Include="data\Context.cs" />
     <Compile Include="data\Entities.cs" />

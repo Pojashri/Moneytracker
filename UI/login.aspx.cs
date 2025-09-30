@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Tracker.common;
 using Tracker.data; 
+
 
 namespace Tracker
 {
@@ -14,6 +17,8 @@ namespace Tracker
         {
 
         }
+
+  
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             var email = txtInputEmail1.Text;
@@ -25,19 +30,19 @@ namespace Tracker
 
                 int code = Convert.ToInt32(proc["code"]);
                 string message = (proc["message"].ToString());
+
                 if (code == 200)
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('✅ Login Successful!');", true);
+                    helpers.ShowAlert(this, message);
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('❌ Invalid Email or Password');", true);
-
-                }
+                    helpers.ShowAlert(this, message);
+                }          
             }
             catch (Exception ex)
             {
-                    ClientScript.RegisterStartupScript(this.GetType(), "alert",  "alert('⚠️ Something went wrong. Please try again later.');", true);
+                helpers.ShowAlert(this, "⚠️ Something went wrong. Please try again later.");
             }
         }
     }
