@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
-using System.Data.Entity.Infrastructure;
 using Tracker.common;
 namespace Tracker.data
 {
@@ -38,8 +39,14 @@ namespace Tracker.data
                 {
                     { "code", Convert.ToInt32(paramArr[6].Value) },
                     { "message", paramArr[7].Value.ToString() }
-                };
 
+                };
+                if (ds.Tables.Count>0 && ds.Tables[0].Rows.Count>0)
+                {
+                    result["password"] = ds.Tables[0].Rows[0]["password"].ToString();
+                }
+              
+               
                 return result;
             }
         }

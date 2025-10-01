@@ -23,38 +23,28 @@ namespace Tracker
         {
             var email = txtLoginEmail.Text;
             var password = txtLoginPassword.Text;
-            var action = "login";
+          
 
             try
             {
-                if (string.IsNullOrWhiteSpace(email))
-                {
-                    
-                    helpers.ShowAlert(this, "Please enter email.");
+                if (string.IsNullOrWhiteSpace(email)) { helpers.ShowAlert(this, "Please enter email."); return; }
+                if (string.IsNullOrWhiteSpace(password)) { helpers.ShowAlert(this, "Please enter password."); return; } ;
+                var user = Repository.userregister("getpassword", email, null, null, null, 0);
 
-                    return;
-                }
+                if (user == null || user["password"] == DBNull.Value){helpers.ShowAlert(this, "User not found."); return;}
+                string storedHash = user["password"].ToString();
+                bool verified = BCrypt.Net.BCrypt.Verify(password, storedHash);
+                if (!verified){ helpers.ShowAlert(this, "Invalid credentials.");  return; }
 
-                if (string.IsNullOrWhiteSpace(password))
-                {
-                    helpers.ShowAlert(this, "Please enter password.");
-                   
-                    return;
-                }
+             
 
-                var proc = Repository.userregister(action, email, password, null, null, 0);
+                int code = Convert.ToInt32(user["code"]);
+                string message = user["message"].ToString();
 
-                int code = Convert.ToInt32(proc["code"]);
-                string message = (proc["message"].ToString());
-
-                if (code == 200)
-                {
+                if (code != 200) 
                     helpers.ShowAlert(this, message);
-                }
                 else
-                {
-                    helpers.ShowAlert(this, message);
-                }          
+                    helpers.ShowAlert(this, "Login successful!");
             }
             catch (Exception )
             {
@@ -69,33 +59,17 @@ namespace Tracker
             var action = "register";
             try
             {
-                if (string.IsNullOrWhiteSpace(email))
-                {
+                if (string.IsNullOrWhiteSpace(email)) { helpers.ShowAlert(this, "Please enter email."); return; }
+                if (string.IsNullOrWhiteSpace(password)) { helpers.ShowAlert(this, "Please enter password."); return; }
+                string passwordHash = BCrypt.Net.BCrypt.HashPassword(password, workFactor: 12);
 
-                    helpers.ShowAlert(this, "Please enter email.");
-
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(password))
-                {
-                    helpers.ShowAlert(this, "Please enter password.");
-
-                    return;
-                }
-                var proc = Repository.userregister(action, email, password, null, null, 0);
-
+                var proc = Repository.userregister(action, email, passwordHash, null, null, 0);
                 int code = Convert.ToInt32(proc["code"]);
                 string message = (proc["message"].ToString());
 
-                if (code == 200)
-                {
-                    helpers.ShowAlert(this, message);
-                }
-                else
-                {
-                    helpers.ShowAlert(this, message);
-                }
+                if (code == 200) { helpers.ShowAlert(this, message); return; }
+                else helpers.ShowAlert(this, message);
+                
             }
             catch (Exception)
             {
