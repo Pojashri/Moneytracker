@@ -21,11 +21,27 @@ namespace Tracker
   
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            var email = txtInputEmail1.Text;
-            var password = txtPassword.Text;
+            var email = txtLoginEmail.Text;
+            var password = txtLoginPassword.Text;
             var action = "login";
+
             try
             {
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    
+                    helpers.ShowAlert(this, "Please enter email.");
+
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(password))
+                {
+                    helpers.ShowAlert(this, "Please enter password.");
+                   
+                    return;
+                }
+
                 var proc = Repository.userregister(action, email, password, null, null, 0);
 
                 int code = Convert.ToInt32(proc["code"]);
@@ -40,7 +56,48 @@ namespace Tracker
                     helpers.ShowAlert(this, message);
                 }          
             }
-            catch (Exception ex)
+            catch (Exception )
+            {
+                helpers.ShowAlert(this, "⚠️ Something went wrong. Please try again later.");
+            }
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            var email = txtRegisterEmail.Text;
+            var password = txtRegisterPassword.Text;
+            var action = "register";
+            try
+            {
+                if (string.IsNullOrWhiteSpace(email))
+                {
+
+                    helpers.ShowAlert(this, "Please enter email.");
+
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(password))
+                {
+                    helpers.ShowAlert(this, "Please enter password.");
+
+                    return;
+                }
+                var proc = Repository.userregister(action, email, password, null, null, 0);
+
+                int code = Convert.ToInt32(proc["code"]);
+                string message = (proc["message"].ToString());
+
+                if (code == 200)
+                {
+                    helpers.ShowAlert(this, message);
+                }
+                else
+                {
+                    helpers.ShowAlert(this, message);
+                }
+            }
+            catch (Exception)
             {
                 helpers.ShowAlert(this, "⚠️ Something went wrong. Please try again later.");
             }
