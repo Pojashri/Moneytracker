@@ -151,19 +151,19 @@
                         <!-- Left Section -->
                         <div class="col-lg-6 text-login">
                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="login-tab"
-       data-bs-toggle="tab"
-       data-bs-target="#login"
-       role="tab">Login</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="register-tab"
-       data-bs-toggle="tab"
-       data-bs-target="#register"
-       role="tab">Register</a>
-  </li>
-</ul>
+                              <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="login-tab"
+                                   data-bs-toggle="tab"
+                                   data-bs-target="#login"
+                                   role="tab">Login</a>
+                              </li>
+                              <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="register-tab"
+                                   data-bs-toggle="tab"
+                                   data-bs-target="#register"
+                                   role="tab">Register</a>
+                              </li>
+                            </ul>
                             <form id="form1" runat="server">
                                 <div class="tab-content" id="myTabContent">
 
@@ -177,17 +177,17 @@
                                 <asp:TextBox ID="txtLoginPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                             </div>
                             <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-custom mb-3" OnClick="btnLogin_Click" />
-
+<div class="text-center">
+    <button type="button" class="btn btn-light border rounded-pill px-4 me-2">Apple</button>
+    <asp:Button ID="btnGoogleLogin" runat="server" Text="Login with Google" OnClick="btnGoogleLogin_Click" CssClass="btn btn-light" />
+</div>
                             <!-- ✅ Correct link for toggle -->
-                             <p>
-      Don’t have an account?
-      <a class="text-primary"
-         data-bs-toggle="tab"
-         data-bs-target="#register">Register</a>
-    </p>
+                             <p> Don’t have an account?
+                              <a class="text-primary"data-bs-toggle="tab" data-bs-target="#register">Register</a>
+                            </p>
                              
 
-                            <a href="#" class="text-muted small">Terms & Conditions</a>
+                           
                         </div>
 
                         <!-- Register Form -->
@@ -201,19 +201,22 @@
                                 <asp:TextBox ID="txtRegisterPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                             </div>
                             <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-custom mb-3" OnClick="btnRegister_Click" />
+                                <%--<div class="text-center">
+                                    <button type="button" class="btn btn-light border rounded-pill px-4 me-2">Apple</button>
+                                    <asp:Button ID="btnGoogleLogin" runat="server" Text="Login with Google" OnClick="btnGoogleLogin_Click" CssClass="btn btn-light" />
+                                </div>--%>
+                                </br>
 
                             <!-- ✅ Correct link for toggle -->
- <p>
-      Already have an account?
-      <a class="text-primary"
-         data-bs-toggle="tab"
-         data-bs-target="#login">Login</a>
-    </p>
+                             <p> Already have an account?
+                                  <a class="text-primary"    data-bs-toggle="tab" data-bs-target="#login">Login</a>
+                             </p>
+
+                                 <a href="#" class="text-muted small">Terms & Conditions</a>
                         </div>
 
-                                </div>
+                          </div>
                             </form>
-
                         </div>
 
                         <!-- Right Section -->
