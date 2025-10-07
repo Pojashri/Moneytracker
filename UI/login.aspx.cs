@@ -1,9 +1,6 @@
-﻿using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
+﻿
 using System;
-using Microsoft.Owin;
-using Microsoft.Owin.Host.SystemWeb;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -29,7 +26,7 @@ namespace Tracker
             var password = txtLoginPassword.Text;
             try
             {
-                if (string.IsNullOrWhiteSpace(email)) { helpers.ShowAlert(this, "Please enter email."); return; }
+                if (string.IsNullOrWhiteSpace(email))    { helpers.ShowAlert(this, "Please enter email.");    return; }
                 if (string.IsNullOrWhiteSpace(password)) { helpers.ShowAlert(this, "Please enter password."); return; }
                 ;
                 var user = Repository.userregister("getpassword", email, null, null, null, 0);
@@ -46,6 +43,7 @@ namespace Tracker
                     helpers.ShowAlert(this, message);
                 else
                     helpers.ShowAlert(this, "Login successful!");
+                    Response.Redirect("Dashboard.aspx");
             }
             catch (Exception)
             {
@@ -76,16 +74,16 @@ namespace Tracker
             }
         }
 
-        protected void btnGoogleLogin_Click(object sender, EventArgs e)
-        {
-          
-            HttpContext.Current.GetOwinContext().Authentication.Challenge(
-                new AuthenticationProperties
-                {
-                    RedirectUri = "/"
-                },
-                "Google"
-            );
-        }
+        //protected void btnGoogleLogin_Click(object sender, EventArgs e)
+        //{
+
+        //    //HttpContext.Current.GetOwinContext().Authentication.Challenge(
+        //    //    new AuthenticationProperties
+        //    //    {
+        //    //        RedirectUri = "/"
+        //    //    },
+        //    //    "Google"
+        //    //);
+        //}
     }
 }

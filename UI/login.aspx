@@ -130,7 +130,7 @@
     <title>Login / Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        body { margin-top: 20px; background: #f8f9fa; }
+        body {  background: #f8f9fa; }
         .card { border-radius: 20px; overflow: hidden; box-shadow: 0px 6px 20px rgba(0,0,0,0.1); }
         .text-login { background: linear-gradient(135deg, #dbd4ff, #f2efff); padding: 50px; }
         .btn-custom { background:#9c8de5; color:#fff; font-weight:600; border:none; border-radius:30px; width:100%; padding:12px; transition:all 0.3s ease; }
@@ -138,12 +138,16 @@
         .account-block { padding:0; background-image:url('/Content/Images/bottles-cash-with-coins-saving-money-concept.jpg'); background-repeat:no-repeat; background-size:cover; height:100%; position:relative; }
         .account-block .overlay { flex:1; position:absolute; top:0; bottom:0; left:0; right:0; background-color:rgba(0,0,0,0.25); }
         .account-testimonial { text-align:center; color:#fff; position:absolute; bottom:2rem; left:0; right:0; }
-        #myTabContent { min-height:400px; }
+         #myTabContent { min-height:400px; }
         .form-label { font-weight:500; }
+         html, body { height: 100%;margin: 0;padding: 0;}
+         #main-wrapper {min-height: 100vh;display: flex;justify-content: center;align-items: center;background: #ebe7fe; 
+}
     </style>
 </head>
 <body>
-    <div id="main-wrapper" class="container">
+    <div id="main-wrapper" >
+        <div class="container"> 
         <div class="row justify-content-center">
             <div class="col-xl-10">
                 <div class="card">
@@ -177,17 +181,7 @@
                                 <asp:TextBox ID="txtLoginPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                             </div>
                             <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-custom mb-3" OnClick="btnLogin_Click" />
-<div class="text-center">
-    <button type="button" class="btn btn-light border rounded-pill px-4 me-2">Apple</button>
-    <asp:Button ID="btnGoogleLogin" runat="server" Text="Login with Google" OnClick="btnGoogleLogin_Click" CssClass="btn btn-light" />
-</div>
-                            <!-- ✅ Correct link for toggle -->
-                             <p> Don’t have an account?
-                              <a class="text-primary"data-bs-toggle="tab" data-bs-target="#register">Register</a>
-                            </p>
-                             
-
-                           
+                             <p> Don’t have an account?   <a class="text-primary"data-bs-toggle="tab" data-bs-target="#register">Register</a>           </p>
                         </div>
 
                         <!-- Register Form -->
@@ -201,25 +195,14 @@
                                 <asp:TextBox ID="txtRegisterPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                             </div>
                             <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btn btn-custom mb-3" OnClick="btnRegister_Click" />
-                                <%--<div class="text-center">
-                                    <button type="button" class="btn btn-light border rounded-pill px-4 me-2">Apple</button>
-                                    <asp:Button ID="btnGoogleLogin" runat="server" Text="Login with Google" OnClick="btnGoogleLogin_Click" CssClass="btn btn-light" />
-                                </div>--%>
-                                </br>
 
-                            <!-- ✅ Correct link for toggle -->
-                             <p> Already have an account?
-                                  <a class="text-primary"    data-bs-toggle="tab" data-bs-target="#login">Login</a>
-                             </p>
-
-                                 <a href="#" class="text-muted small">Terms & Conditions</a>
+                             <p> Already have an account? <a class="text-primary"    data-bs-toggle="tab" data-bs-target="#login">Login</a> </p>
+                             <a href="#" class="text-muted small">Terms & Conditions</a>
                         </div>
-
                           </div>
                             </form>
                         </div>
 
-                        <!-- Right Section -->
                         <div class="col-lg-6 d-none d-lg-block">
                             <div class="account-block">
                                 <div class="overlay"></div>
@@ -230,8 +213,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- end card -->
             </div>
+        </div>
         </div>
     </div>
 
