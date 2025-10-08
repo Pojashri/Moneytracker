@@ -6,41 +6,55 @@
     <meta charset="utf-8" />
     <title>Coin Control - Money Tracker</title>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
-
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
     <style>
-        body {margin: 0; font-family: Arial, sans-serif; }
-        header {   background-color: #dbd4ff; padding: 15px 30px; display: flex;
-            justify-content: space-between;  align-items: center;box-shadow: 0px 2px 5px rgba(0,0,0,0.1);}
+        body {margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f0;}
+        header {background-color: #c69fd5; padding: 15px 30px; display: flex; color:#fdfdc9;justify-content: space-between;  align-items: center;box-shadow: 0px 2px 5px rgba(0,0,0,0.1);}
         header .site-title { font-size: 24px;font-weight: bold;}
-        nav a { margin: 0 15px;  text-decoration: none; color: #333;font-weight: 500;}
+        nav a { margin: 0 15px;  text-decoration: none; color:#fdfdc9;font-weight: 500;}
         nav a:hover { color: #000; }
         .content {padding: 20px; min-height: calc(100vh - 120px);background-color: #f9f9f9; }
         footer {background-color: #f1f1f1; padding: 15px;text-align: center; font-size: 14px; color: #666;  }
     </style>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <!-- Header -->
-        <header>
-            <div class="site-title"><img src="Scripts/Coin control.png"></div>
-            <nav>
-                <a href="Dashboard.aspx">Dashboard</a>
-                <a href="categorynbudget.aspx">Budgets</a>
-                <a href="reports.aspx">Reports</a>
-                <a href="profileSetting.aspx">Profile</a>
+<form id="form1" runat="server">
+    <!-- Header -->
+
+     <header class="py-3 shadow-sm" style="background-color:#ffffff;">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Left logo/title -->
+            <div class="d-flex align-items-center gap-2">
+                <div style="width:36px; height:36px; background-color:#c69fd5; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">C</div>
+                <span class="fs-4 fw-bold text-dark">Coin<span style="color:#ad43d6;">Control</span></span>
+            </div>
+
+            <!-- Center nav -->
+            <nav class="d-flex gap-4">
+                <a href="Dashboard.aspx" class="text-decoration-none text-dark fw-medium">Home</a>
+                <a href="categorynbudget.aspx" class="text-decoration-none text-dark fw-medium">Budgets</a>
+                <a href="reports.aspx" class="text-decoration-none text-dark fw-medium">Reports</a>
+                <a href="profileSetting.aspx" class="text-decoration-none text-dark fw-medium">Profile</a>
             </nav>
-        </header>
-        <!-- Content -->
-        <div class="content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+
+            <!-- Right button -->
+            <div>
+                <a href="#" class="btn px-4 py-2 fw-semibold" style="background-color:#ad43d6; color:white; border-radius:30px;">Logout</a>
+            </div>
         </div>
-        <!-- Footer -->
-        <footer>
-            &copy; 2025 Coin Control. All Rights Reserved.
-        </footer>
-    </form>
+    </header>
+
+    <!-- Content -->
+        <div class="content container my-5">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3 bg-light">
+        &copy; 2025 Coin Control. All Rights Reserved.
+    </footer>
+</form>
+
 </body>
 </html>
