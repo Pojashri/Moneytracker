@@ -13,5 +13,15 @@ namespace Tracker
         {
 
         }
+
+        protected void btnSaveCategory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSaveTransaction_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
