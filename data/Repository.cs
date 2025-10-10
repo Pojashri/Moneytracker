@@ -103,7 +103,7 @@ namespace Tracker.data
                            int action,
                            string textField,
                            string valueField,
-                           string emptyText = "-- Select --")
+                           string emptyText = "-- Select --")   
         {
             try
             {
@@ -132,5 +132,32 @@ namespace Tracker.data
                 ddl.Items.Add(new ListItem("-- Error Loading Data --", ""));
             }
         }
+
+        public static Dictionary<string, object> dashboardkpis()
+        {
+            SqlParameter[] paramArr = new SqlParameter[]
+            {
+                new SqlParameter("@code", SqlDbType.Int) { Direction = ParameterDirection.Output },
+                new SqlParameter("@message", SqlDbType.VarChar, 255) { Direction = ParameterDirection.Output }
+            };
+            using (var db = new Context())
+            {
+                var ds = SqlHelper.ExecuteDataset(db.Database.Connection.ConnectionString, CommandType.StoredProcedure, "dashboardkpis", paramArr);
+                var result = new Dictionary<string, object>
+                    {
+                        { "code", Convert.ToInt32(paramArr[0].Value) },
+                        { "message", paramArr[1].Value.ToString() },
+                        { "data", ds.Tables.Count > 0 ? ds.Tables[0] : null },
+                    {"data1", ds.Tables.Count>0 ? ds.Tables[0] : null },
+
+                    };
+                return result;
+            }
+        }
+
     }
+
+
+
+
 }
